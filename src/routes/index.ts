@@ -1,11 +1,8 @@
-import { Router, Request, Response } from 'express';
+import { Router } from 'express';
+import sessionsRouter from './users/sessions.routes';
 
 const routes = Router();
 
-routes.get('/', (req: Request, res: Response) => {
-  res.json({
-    message: 'Hello World!',
-  });
-});
+routes.use('/sessions', sessionsRouter);
 
 export default routes;

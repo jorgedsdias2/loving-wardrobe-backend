@@ -1,7 +1,10 @@
+import 'reflect-metadata';
 import 'dotenv/config';
 
 import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
+
+import './database';
 
 import AppError from './errors/AppError';
 import routes from './routes';
