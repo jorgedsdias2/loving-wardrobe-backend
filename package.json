@@ -5,6 +5,7 @@
   "author": "Jorge Dias",
   "license": "MIT",
   "scripts": {
+    "build": "tsc",
     "dev:server": "ts-node-dev --ignore-watch node_modules src/server.ts"
   },
   "devDependencies": {
@@ -24,6 +25,7 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1"
   }
 }
