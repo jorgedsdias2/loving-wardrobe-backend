@@ -3,12 +3,12 @@ import { Request, Response } from 'express';
 import UsersRepository from '../../database/repositories/users/UsersRepository';
 
 export default class SessionsController {
-  usersRepository = new UsersRepository();
-
   public async index(req: Request, res: Response): Promise<Response> {
-    await this.usersRepository.create({
+    const usersRepository = new UsersRepository();
+
+    usersRepository.create({
       username: 'Jorge Dias',
-      email: 'jorgedsdias4@gmail.com',
+      email: 'jorge.dias@gmail.com',
       password: '123456',
     });
 
