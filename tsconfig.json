@@ -14,6 +14,7 @@
       "@database/*": ["database/*"],
       "@errors/*": ["errors/*"],
       "@middlewares/*": ["middlewares/*"],
+      "@providers/*": ["providers/*"],
       "@routes/*": ["routes/*"],
       "@services/*": ["services/*"]
     },
