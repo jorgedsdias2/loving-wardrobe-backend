@@ -2,19 +2,17 @@ import { Request, Response } from 'express';
 import { classToClass } from 'class-transformer';
 
 import AuthenticateUserService from '@services/users/AuthenticateUserService';
-import UsersRepository from '@database/repositories/users/UsersRepository';
-import BCryptHashProvider from '@providers/HashProvider/BCryptHashProvider';
+import AuthenticateUserResolve from '@container/users/AuthenticateUserResolve';
 
 export default class SessionsController {
+  private authenticateUserService: AuthenticateUserService;
+
   public async create(req: Request, res: Response): Promise<Response> {
     const { username, password } = req.body;
 
-    const authenticateUserService = new AuthenticateUserService(
-      new UsersRepository(),
-      new BCryptHashProvider(),
-    );
+    this.authenticateUserService = AuthenticateUserResolve.resolve();
 
-    const { user, token } = await authenticateUserService.execute({
+    const { user, token } = await this.authenticateUserService.execute({
       username,
       password,
     });

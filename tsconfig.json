@@ -10,6 +10,7 @@
     "allowJs": true,
     "paths": {
       "@config/*": ["config/*"],
+      "@container/*": ["container/*"],
       "@controllers/*": ["controllers/*"],
       "@database/*": ["database/*"],
       "@errors/*": ["errors/*"],

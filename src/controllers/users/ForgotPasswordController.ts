@@ -1,22 +1,17 @@
 import { Request, Response } from 'express';
 
 import SendForgotPasswordEmailService from '@services/users/SendForgotPasswordEmailService';
-
-import EtherealMailProvider from '@providers/MailProvider/EtherealMailProvider';
-import UsersRepository from '@database/repositories/users/UsersRepository';
-import UserTokensRepository from '@database/repositories/users/UserTokensRepository';
+import SendForgotPasswordEmailResolve from '@container/users/SendForgotPasswordEmailResolve';
 
 export default class ForgotPasswordController {
+  private sendForgotPasswordEmailService: SendForgotPasswordEmailService;
+
   public async create(req: Request, res: Response): Promise<Response> {
     const { email } = req.body;
 
-    const sendForgotPasswordEmailService = new SendForgotPasswordEmailService(
-      new UsersRepository(),
-      new EtherealMailProvider(),
-      new UserTokensRepository(),
-    );
+    this.sendForgotPasswordEmailService = SendForgotPasswordEmailResolve.resolve();
 
-    await sendForgotPasswordEmailService.execute({
+    await this.sendForgotPasswordEmailService.execute({
       email,
     });
 
