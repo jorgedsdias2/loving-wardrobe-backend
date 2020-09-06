@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 
 import SendForgotPasswordEmailService from '@services/users/SendForgotPasswordEmailService';
-import SendForgotPasswordEmailResolve from '@container/users/SendForgotPasswordEmailResolve';
+import SendForgotPasswordEmailResolve from '@resolvers/users/SendForgotPasswordEmailResolve';
 
 export default class ForgotPasswordController {
   private sendForgotPasswordEmailService: SendForgotPasswordEmailService;

@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { classToClass } from 'class-transformer';
 
 import AuthenticateUserService from '@services/users/AuthenticateUserService';
-import AuthenticateUserResolve from '@container/users/AuthenticateUserResolve';
+import AuthenticateUserResolve from '@resolvers/users/AuthenticateUserResolve';
 
 export default class SessionsController {
   private authenticateUserService: AuthenticateUserService;
