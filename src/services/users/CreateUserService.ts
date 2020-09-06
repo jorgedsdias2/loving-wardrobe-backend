@@ -1,9 +1,10 @@
 import AppError from '@errors/AppError';
 import User from '@database/entities/User';
 import IUsersRepository from '@database/repositories/users/models/IUsersRepository';
-import IHashProvider from '@providers/hashProvider/models/IHashProvider';
+import IHashProvider from '@providers/HashProvider/models/IHashProvider';
 
 interface IRequest {
+  name: string;
   username: string;
   email: string;
   password: string;
@@ -15,7 +16,12 @@ class CreateUserService {
     private hashProvider: IHashProvider,
   ) {}
 
-  public async execute({ username, email, password }: IRequest): Promise<User> {
+  public async execute({
+    name,
+    username,
+    email,
+    password,
+  }: IRequest): Promise<User> {
     const checkUsernameExists = await this.usersRepository.findByUsername(
       username,
     );
@@ -33,6 +39,7 @@ class CreateUserService {
     const hashedPassword = await this.hashProvider.generateHash(password);
 
     const user = this.usersRepository.create({
+      name,
       username,
       email,
       password: hashedPassword,

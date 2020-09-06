@@ -3,11 +3,11 @@ import { classToClass } from 'class-transformer';
 
 import CreateUserService from '@services/users/CreateUserService';
 import UsersRepository from '@database/repositories/users/UsersRepository';
-import BCryptHashProvider from '@providers/hashProvider/BCryptHashProvider';
+import BCryptHashProvider from '@providers/HashProvider/BCryptHashProvider';
 
 export default class UsersController {
   public async create(req: Request, res: Response): Promise<Response> {
-    const { username, email, password } = req.body;
+    const { name, username, email, password } = req.body;
 
     const createUser = new CreateUserService(
       new UsersRepository(),
@@ -15,6 +15,7 @@ export default class UsersController {
     );
 
     const user = await createUser.execute({
+      name,
       username,
       email,
       password,

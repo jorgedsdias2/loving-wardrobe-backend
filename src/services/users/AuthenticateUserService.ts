@@ -4,7 +4,7 @@ import authConfig from '@config/auth';
 import AppError from '@errors/AppError';
 import User from '@database/entities/User';
 import IUsersRepository from '@database/repositories/users/models/IUsersRepository';
-import IHashProvider from '@providers/hashProvider/models/IHashProvider';
+import IHashProvider from '@providers/HashProvider/models/IHashProvider';
 
 interface IRequest {
   username: string;
