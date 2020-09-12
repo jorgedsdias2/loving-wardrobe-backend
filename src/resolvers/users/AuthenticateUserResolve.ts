@@ -3,7 +3,7 @@ import UsersRepository from '@database/repositories/users/UsersRepository';
 import BCryptHashProvider from '@providers/HashProvider/BCryptHashProvider';
 
 class AuthenticateUserResolve {
-  public static resolve(): AuthenticateUserService {
+  public static async resolve(): Promise<AuthenticateUserService> {
     const authenticateUserService = new AuthenticateUserService(
       new UsersRepository(),
       new BCryptHashProvider(),

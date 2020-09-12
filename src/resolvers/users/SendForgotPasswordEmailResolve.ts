@@ -4,7 +4,7 @@ import UserTokensRepository from '@database/repositories/users/UserTokensReposit
 import SendForgotPasswordEmailService from '@services/users/SendForgotPasswordEmailService';
 
 class SendForgotPasswordEmailResolve {
-  public static resolve(): SendForgotPasswordEmailService {
+  public static async resolve(): Promise<SendForgotPasswordEmailService> {
     const sendForgotPasswordEmailService = new SendForgotPasswordEmailService(
       new UsersRepository(),
       new EtherealMailProvider(),

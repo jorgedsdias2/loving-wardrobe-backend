@@ -10,7 +10,7 @@ export default class UsersController {
   public async create(req: Request, res: Response): Promise<Response> {
     const { name, username, email, password } = req.body;
 
-    this.createUser = CreateUserResolve.resolve();
+    this.createUser = await CreateUserResolve.resolve();
 
     const user = await this.createUser.execute({
       name,
