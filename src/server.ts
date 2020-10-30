@@ -9,6 +9,7 @@ import AppError from './errors/AppError';
 import routes from './routes';
 
 import './database';
+import './container';
 
 const app = express();
 app.use(cors());

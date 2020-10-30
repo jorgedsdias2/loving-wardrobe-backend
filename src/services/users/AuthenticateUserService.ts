@@ -1,10 +1,11 @@
 import { sign } from 'jsonwebtoken';
+import { injectable, inject } from 'tsyringe';
 
 import authConfig from '@config/auth';
 import AppError from '@errors/AppError';
 import User from '@database/entities/User';
 import IUsersRepository from '@database/repositories/users/models/IUsersRepository';
-import IHashProvider from '@providers/HashProvider/models/IHashProvider';
+import IHashProvider from '@container/providers/HashProvider/models/IHashProvider';
 
 interface IRequest {
   username: string;
@@ -16,9 +17,13 @@ interface IResponse {
   token: string;
 }
 
+@injectable()
 class AuthenticateUserService {
   constructor(
+    @inject('UsersRepository')
     private usersRepository: IUsersRepository,
+
+    @inject('HashProvider')
     private hashProvider: IHashProvider,
   ) {}
 
