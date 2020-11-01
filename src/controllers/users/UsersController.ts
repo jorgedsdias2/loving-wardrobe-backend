@@ -1,18 +1,16 @@
 import { Request, Response } from 'express';
+import { container } from 'tsyringe';
 import { classToClass } from 'class-transformer';
 
 import CreateUserService from '@services/users/CreateUserService';
-import CreateUserResolve from '@resolvers/users/CreateUserResolve';
 
 export default class UsersController {
-  private createUser: CreateUserService;
-
   public async create(req: Request, res: Response): Promise<Response> {
     const { name, username, email, password } = req.body;
 
-    this.createUser = await CreateUserResolve.resolve();
+    const createUserService = container.resolve(CreateUserService);
 
-    const user = await this.createUser.execute({
+    const user = await createUserService.execute({
       name,
       username,
       email,

@@ -14,7 +14,7 @@
       "@database/*": ["database/*"],
       "@errors/*": ["errors/*"],
       "@middlewares/*": ["middlewares/*"],
-      "@providers/*": ["providers/*"],
+      "@container/*": ["container/*"],
       "@resolvers/*": ["resolvers/*"],
       "@routes/*": ["routes/*"],
       "@services/*": ["services/*"]

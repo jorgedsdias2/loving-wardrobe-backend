@@ -1,16 +1,23 @@
 import AppError from '@errors/AppError';
-import IMailProvider from '@providers/MailProvider/models/IMailProvider';
+import IMailProvider from '@container/providers/MailProvider/models/IMailProvider';
 import IUsersRepository from '@database/repositories/users/models/IUsersRepository';
 import IUserTokensRepository from '@database/repositories/users/models/IUserTokensRepository';
+import { inject, injectable } from 'tsyringe';
 
 interface IRequest {
   email: string;
 }
 
+@injectable()
 class SendForgotPasswordEmailService {
   constructor(
+    @inject('UsersRepository')
     private usersRepository: IUsersRepository,
+
+    @inject('MailProvider')
     private mailProvider: IMailProvider,
+
+    @inject('UserTokensRepository')
     private userTokensRepository: IUserTokensRepository,
   ) {}
 
