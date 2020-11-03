@@ -21,12 +21,12 @@ class Combo {
   @Column()
   secundary_type_id: string;
 
-  @ManyToOne(() => Type, type => type.primary_type)
-  @JoinColumn({ name: 'product_id' })
+  @ManyToOne(() => Type, type => type.primary_type, { eager: true })
+  @JoinColumn({ name: 'primary_type_id' })
   primary_type: Type;
 
-  @ManyToOne(() => Type, type => type.secundary_type)
-  @JoinColumn({ name: 'product_id' })
+  @ManyToOne(() => Type, type => type.secundary_type, { eager: true })
+  @JoinColumn({ name: 'secundary_type_id' })
   secundary_type: Type;
 
   @CreateDateColumn()
